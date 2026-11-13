@@ -1,0 +1,114 @@
+\usepackage[most]{tcolorbox}
+\usepackage{xcolor}
+\usepackage{titlesec}
+\usepackage{fancyhdr}
+\usepackage{microtype}
+\usepackage{etoolbox}
+\usepackage{graphicx}
+
+\definecolor{ExamInk}{HTML}{243142}
+\definecolor{ExamBlue}{HTML}{EAF4FF}
+\definecolor{ExamBlueLine}{HTML}{77A8D8}
+\definecolor{ExamGreen}{HTML}{EEF8F1}
+\definecolor{ExamGreenLine}{HTML}{7EB58A}
+\definecolor{ExamRose}{HTML}{FFF1F1}
+\definecolor{ExamRoseLine}{HTML}{D98282}
+\definecolor{ExamAmber}{HTML}{FFF6DF}
+\definecolor{ExamAmberLine}{HTML}{D8AE54}
+\definecolor{ExamGray}{HTML}{F6F7F9}
+\definecolor{ExamRule}{HTML}{D8DEE8}
+
+\AtBeginDocument{%
+  \color{ExamInk}%
+  \setlength{\parindent}{0pt}%
+  \setlength{\parskip}{0.42em}%
+  \linespread{1.08}\selectfont%
+}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\footnotesize \leftmark}
+\fancyhead[R]{\footnotesize OCR 润色版}
+\fancyfoot[C]{\footnotesize \thepage}
+\renewcommand{\headrulewidth}{0.25pt}
+\renewcommand{\footrulewidth}{0pt}
+\setlength{\headheight}{14pt}
+
+\tcbset{
+  examBase/.style={
+    enhanced,
+    breakable,
+    sharp corners=south,
+    arc=2mm,
+    boxrule=0.55pt,
+    left=8pt,
+    right=8pt,
+    top=7pt,
+    bottom=7pt,
+    before skip=9pt,
+    after skip=9pt,
+    fontupper=\normalsize,
+  }
+}
+
+\newtcolorbox{questionbox}{
+  examBase,
+  colback=white,
+  colframe=ExamBlueLine,
+  borderline west={2.2pt}{0pt}{ExamBlueLine}
+}
+
+\newtcolorbox{answerbox}{
+  examBase,
+  colback=ExamGreen,
+  colframe=ExamGreenLine,
+  borderline west={2.2pt}{0pt}{ExamGreenLine}
+}
+
+\newtcolorbox{analysisbox}{
+  examBase,
+  colback=ExamRose,
+  colframe=ExamRoseLine,
+  borderline west={2.2pt}{0pt}{ExamRoseLine}
+}
+
+\renewenvironment{quote}
+  {\begin{tcolorbox}[examBase,colback=ExamAmber,colframe=ExamAmberLine,borderline west={2.2pt}{0pt}{ExamAmberLine}]}
+  {\end{tcolorbox}}
+
+\makeatletter
+\newlength{\examimagewidth}
+\newlength{\examimageheight}
+\AtBeginDocument{%
+  \setlength{\examimagewidth}{0.72\linewidth}%
+  \setlength{\examimageheight}{0.27\textheight}%
+  \renewcommand*\pandocbounded[1]{%
+    \sbox\pandoc@box{#1}%
+    \Gscale@div\@tempa{\examimageheight}{\dimexpr\ht\pandoc@box+\dp\pandoc@box\relax}%
+    \Gscale@div\@tempb{\examimagewidth}{\wd\pandoc@box}%
+    \ifdim\@tempb\p@<\@tempa\p@\let\@tempa\@tempb\fi%
+    \ifdim\@tempa\p@<\p@%
+      \makebox[\linewidth][c]{\scalebox{\@tempa}{\usebox\pandoc@box}}%
+    \else%
+      \makebox[\linewidth][c]{\usebox{\pandoc@box}}%
+    \fi%
+  }%
+}
+\makeatother
+
+\titleformat{\section}
+  {\Large\bfseries\color{ExamInk}}
+  {}
+  {0pt}
+  {}
+  [\vspace{0.15em}{\color{ExamBlueLine}\titlerule[1.2pt]}]
+
+\titleformat{\subsection}
+  {\large\bfseries\color{ExamInk}}
+  {}
+  {0pt}
+  {}
+  [\vspace{-0.1em}{\color{ExamGreenLine}\titlerule[0.7pt]}]
+
+\titlespacing*{\section}{0pt}{1.2em}{0.8em}
+\titlespacing*{\subsection}{0pt}{0.9em}{0.55em}

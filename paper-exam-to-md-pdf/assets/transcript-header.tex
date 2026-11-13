@@ -1,0 +1,36 @@
+\usepackage{newunicodechar}
+\usepackage{needspace}
+\newfontfamily\symbolfallback{Arial Unicode MS}
+\newunicodechar{∴}{\ensuremath{\therefore}}
+\newunicodechar{∵}{\ensuremath{\because}}
+\newunicodechar{①}{{\symbolfallback\char"2460}}
+\newunicodechar{②}{{\symbolfallback\char"2461}}
+\newunicodechar{③}{{\symbolfallback\char"2462}}
+\newunicodechar{④}{{\symbolfallback\char"2463}}
+\newunicodechar{⑤}{{\symbolfallback\char"2464}}
+\newunicodechar{⑥}{{\symbolfallback\char"2465}}
+\newunicodechar{⑦}{{\symbolfallback\char"2466}}
+\newunicodechar{⑧}{{\symbolfallback\char"2467}}
+\newunicodechar{⑨}{{\symbolfallback\char"2468}}
+\newunicodechar{⑩}{{\symbolfallback\char"2469}}
+\AtBeginDocument{\hypersetup{pdfauthor={chengbai}}}
+\setlength{\parskip}{5pt plus 1pt minus 1pt}
+% Measure without forcing tall questions into an unbreakable minipage.
+% The tall branch unpacks the same vertical list, preserving natural page breaks.
+\newbox\transcriptquestionbox
+\newdimen\transcriptquestionheight
+\newenvironment{transcriptquestion}{%
+  \par\setbox\transcriptquestionbox=\vbox\bgroup
+  \hsize=\linewidth
+}{%
+  \par\egroup
+  \transcriptquestionheight=\ht\transcriptquestionbox
+  \advance\transcriptquestionheight by \dp\transcriptquestionbox
+  \ifdim\transcriptquestionheight<.94\textheight
+    \Needspace{\transcriptquestionheight}\box\transcriptquestionbox
+  \else
+    \typeout{Transcript: long question uses natural page breaks.}%
+    \unvbox\transcriptquestionbox
+  \fi
+  \par\medskip
+}

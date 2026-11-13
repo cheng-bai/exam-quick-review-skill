@@ -1,0 +1,4 @@
+interface:
+  display_name: "数学试卷结构难度分析"
+  short_description: "按六维及H/C/T规则分析试卷，保留步骤证据与批注，支持多卷汇总"
+  default_prompt: "使用 $question-difficulty-analysis 分析我提供的试卷，输出有证据的教师报告与可复算明细。"

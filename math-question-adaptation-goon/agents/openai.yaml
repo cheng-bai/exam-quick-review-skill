@@ -1,0 +1,4 @@
+interface:
+  display_name: "GO-ON 数学题目改编"
+  short_description: "从母题生成并验证变式与题族，说明结构变化、新增动作和教学用途"
+  default_prompt: "用 $math-question-adaptation-goon 改编这道母题，按我的教学目标给出完整新题、答案解析和改编说明。"
