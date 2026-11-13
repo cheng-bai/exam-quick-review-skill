@@ -113,6 +113,82 @@ def test_exam_blocks() -> None:
     assert "全角数字题干" not in escaped
 
 
+def test_numeric_paragraphs_do_not_crash() -> None:
+    latex = pandoc_latex(
+        """![](num.png)
+
+42
+
+$42$
+
+1
+
+１２
+
+1. 题干仍应入盒
+""",
+        EXAM_FILTER,
+    )
+    assert latex.count(r"\begin{questionbox}") == 1, latex
+    assert "题干仍应入盒" in between(latex, r"\begin{questionbox}", r"\end{questionbox}")
+    assert r"\includegraphics{num.png}" in latex
+    assert "42" in latex
+    assert "１２" in latex
+
+
+def test_restarted_list_stays_in_analysis() -> None:
+    latex = pandoc_latex(
+        """1. 第一题
+
+答案：分点
+
+1. 第一空
+2. 第二空
+
+解析：得到 42。
+
+1. 先求范围
+2. 再代入
+
+### 分隔
+
+3. 第三题
+""",
+        EXAM_FILTER,
+    )
+    assert latex.count(r"\begin{questionbox}") == 2, latex
+    assert latex.count(r"\begin{analysisbox}") == 1, latex
+    answer = between(latex, r"\begin{answerbox}", r"\end{answerbox}")
+    assert "第一空" in answer and "第二空" in answer
+    assert "先求范围" not in answer
+    analysis = between(latex, r"\begin{analysisbox}", r"\end{analysisbox}")
+    assert "先求范围" in analysis
+    assert "再代入" in analysis
+    assert "分隔" in analysis
+    assert "第三题" not in analysis
+    assert r"\begin{questionbox}" not in analysis
+    third = latex.split("第三题", 1)[0]
+    assert third.count(r"\begin{questionbox}") == 2
+
+
+def test_later_question_number_leaves_analysis() -> None:
+    latex = pandoc_latex(
+        """1. 第一题
+
+答案：A
+
+解析：因为 (ii) 成立。
+
+2. 第二题
+""",
+        EXAM_FILTER,
+    )
+    assert latex.count(r"\begin{questionbox}") == 2, latex
+    analysis = between(latex, r"\begin{analysisbox}", r"\end{analysisbox}")
+    assert "(ii)" in analysis
+    assert "第二题" not in analysis
+
+
 def test_teacher_figure_height() -> None:
     latex = pandoc_latex(
         """![](tall.png)
@@ -162,6 +238,9 @@ def test_teacher_figure_height() -> None:
 
 def main() -> int:
     test_exam_blocks()
+    test_numeric_paragraphs_do_not_crash()
+    test_restarted_list_stays_in_analysis()
+    test_later_question_number_leaves_analysis()
     test_teacher_figure_height()
     print("LAYOUT FILTER TESTS PASS")
     return 0

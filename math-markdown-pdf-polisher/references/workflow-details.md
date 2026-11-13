@@ -40,7 +40,7 @@
    - 正式 PDF 默认先走 LaTeX：优先 Pandoc -> XeLaTeX；需要强版式控制时生成 `.tex` 并用模板编译。
    - 试卷/解析版 Markdown 优先套用本 skill 的 LaTeX 精排资产：
      - `assets/latex-exam-polish-header.tex`：A4 讲义式浅色盒、题干白底蓝左线、答案浅绿盒、解析浅红盒、图片尺寸上限。
-   - `scripts/exam-blocks.lua`：有序列表的每一项，以及以半角/全角数字加 `.`、`．`、`、` 开头的段落，进入题干盒；`答案：`、`解析：` 进入对应盒子。解析里的 `(ii)/(iii)` 不会误判成新题。
+   - `scripts/exam-blocks.lua`：尚未进入答案或解析时，有序列表的每一项进入题干盒；已经在答案或解析里、且从 1 重新编号的有序列表留在当前盒子。从更大题号继续的有序列表仍是下一题。以半角/全角数字加 `.`、`．`、`、` 开头的段落进入题干盒；`答案：`、`解析：` 进入对应盒子。解析里的 `(ii)/(iii)` 不会误判成新题。
    - 方括号标签教师版不要套用上述标准 filter；改用 `scripts/prepare_teacher_handout.py`、`scripts/teacher-handout-blocks.lua` 和 `assets/latex-teacher-kami-header.tex`，确保多段解析完整入框且 Markdown 内容仍由 Pandoc 正常解析。
    - 低饱和教师讲义必须用 `scripts/render_teacher_handout.py` 渲染；它持久化 `.tex` 和 `.log`，不要用会清理临时日志的单步 Pandoc 命令替代正式交付构建。
    - 第一轮 XeLaTeX 报错时，先修 Markdown/TeX 的高置信问题，如未转义的特殊字符、坏 `\frac`、缺失图片路径、错误宏、Unicode 数学符号；不要立刻退回 HTML。

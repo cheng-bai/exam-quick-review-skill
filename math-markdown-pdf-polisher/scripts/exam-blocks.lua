@@ -60,7 +60,8 @@ local function text_starts_question(text)
   local index = 1
   local function point_at(pos)
     local offset = utf8.offset(text, pos)
-    if not offset then
+    -- offset() returns the index just past the end; codepoint() rejects it.
+    if not offset or offset > #text then
       return nil
     end
     return utf8.codepoint(text, offset)
@@ -176,7 +177,13 @@ function Pandoc(doc)
       end
       table.insert(out, block)
     elseif block.t == "OrderedList" then
-      append_ordered_questions(out, block)
+      -- A list that restarts at 1 inside an open answer or analysis is a
+      -- sequence of steps. A later start number is the next exam question.
+      if (in_answer or in_analysis) and (block.start or 1) == 1 then
+        table.insert(out, block)
+      else
+        append_ordered_questions(out, block)
+      end
     elseif starts_question(block) then
       close_all(out)
       table.insert(out, raw("\\begin{questionbox}"))
