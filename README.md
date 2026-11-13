@@ -1,12 +1,14 @@
 # 常用教学与教研 Skills
 
-这里收集可复用的 AI 工作流程。目前包含六学科试卷快评，以及高中数学多卷考情分析与分类汇编。每个 Skill 是可供支持技能的 AI 工具读取的一组说明、参考资料和可选脚本，不是一键生成软件。
+这里收集可复用的 AI 工作流程。目前包含六学科试卷快评、高中数学多卷考情与分类汇编，以及讲义和工作台 PDF 制作。每个 Skill 是可供支持技能的 AI 工具读取的一组说明、参考资料和可选脚本，不是一键生成软件。
 
 ## 按任务查找
 
 | Skill | 适用任务 | 检索标签 |
 |---|---|---|
 | [试卷洞见与分类汇编](math-exam-insight-compilation/) | 多套高中数学试卷的单卷分析、跨卷考情、分类汇编及教学说明 | 高中数学、多卷汇编、考点分析、难度分层、分类汇编、教研洞察 |
+| [讲义 PDF 版式](lecture-pdf-layout/) | 为已确定的数学讲义内容设计与验证 PDF 版式 | 数学讲义、排版、目录、书签 |
+| [工作台学生版 PDF](xdf-workbench-student-pdf/) | 将数学分类汇编制作成供高中工作台识别的学生版 PDF | 分类汇编、学生版、工作台、PDF |
 | [数学试卷快评](exam-quick-review/math-exam-quick-review/) | 单卷数学快评及按需制作教师版 | 数学、试卷快评、PDF、教师版 |
 | [语文试卷快评](exam-quick-review/chinese-exam-quick-review/) | 单卷语文快评 | 语文、试卷快评、PDF |
 | [英语试卷快评](exam-quick-review/english-exam-quick-review/) | 单卷英语快评 | 英语、试卷快评、PDF |
@@ -14,7 +16,7 @@
 | [化学试卷快评](exam-quick-review/chemistry-exam-quick-review/) | 单卷化学快评 | 化学、试卷快评、PDF |
 | [生物试卷快评](exam-quick-review/biology-exam-quick-review/) | 单卷生物快评 | 生物、试卷快评、PDF |
 
-仓库顶层按技能或技能系列组织：`exam-quick-review/` 集中存放六学科快评和通用快评技能；`math-exam-insight-compilation/` 是独立的数学多卷分类汇编技能。每个快评子目录都是独立 Skill，安装时选择其中需要的完整子目录。
+仓库顶层按技能或技能系列组织：`exam-quick-review/` 集中存放六学科快评和通用快评技能；其他顶层技能各自独立。每个快评子目录也是独立 Skill，安装时选择其中需要的完整子目录。
 
 ## 安装与使用
 
@@ -25,6 +27,10 @@
 ## 数学分类汇编
 
 详见 [技能介绍与使用指南](math-exam-insight-compilation/README.md)。从可追溯原卷与题目底稿出发，先按卷分析，再按专题和数学任务组织汇编，以稳定题号与统计口径支撑考点、难度与来源分析。按需生成 Markdown 题集、卷内分析、专题说明和统计记录；PDF 和可视化按当次要求制作。
+
+## 讲义与工作台 PDF
+
+[讲义 PDF 版式](lecture-pdf-layout/SKILL.md)提供版式原则及可选 LaTeX 模板，不替代数学审校。[工作台学生版 PDF](xdf-workbench-student-pdf/SKILL.md)提供分类、生成和核验流程；其脚本依赖另行配置的兼容 `math-handout-pdf` 引擎以及 Python、Node、Chrome 和相应依赖，仓库不包含该引擎。本地验收不等于工作台识别成功。
 
 ## 六学科试卷快评
 
