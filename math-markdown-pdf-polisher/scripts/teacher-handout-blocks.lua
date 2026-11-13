@@ -52,17 +52,75 @@ local function image_only(block)
   return block.content[1]
 end
 
+local function format_factor(value)
+  local text = string.format("%.4f", value)
+  text = text:gsub("0+$", ""):gsub("%.$", "")
+  if text == "" or text == "-" then
+    return "0"
+  end
+  return text
+end
+
+local function escape_graphics_path(src)
+  return (src:gsub("%%", "\\%%"):gsub("#", "\\#"))
+end
+
+-- Pandoc maps a percentage height to \\linewidth or \\textheight depending on
+-- version, and drops an unrecognized "0.27\\textheight" attribute back to
+-- height=\\textheight. Write the cap explicitly instead.
+local function latex_length(value, percent_of)
+  if not value or value == "" then
+    return nil
+  end
+  if value:find("\\", 1, true) then
+    if value:find("[%{%}%s#&]") then
+      return nil
+    end
+    return value
+  end
+  local number, unit = value:match("^([%d%.]+)%s*([%a%%]*)$")
+  local amount = tonumber(number)
+  if not amount or unit == nil then
+    return nil
+  end
+  if unit == "%" then
+    return format_factor(amount / 100) .. percent_of
+  end
+  if unit == "inch" then
+    unit = "in"
+  end
+  if unit == "px" or unit == "" then
+    return format_factor(amount / 96) .. "in"
+  end
+  if unit == "pt" or unit == "cm" or unit == "mm" or unit == "in" or unit == "em" or unit == "pc" then
+    return format_factor(amount) .. unit
+  end
+  return nil
+end
+
 function Para(el)
   local image = image_only(el)
   if not image then
     return nil
   end
-  image.caption = {}
-  if not image.attributes["width"] then
-    image.attributes["width"] = "58%"
+  local width = latex_length(image.attributes["width"], "\\linewidth")
+  local height = latex_length(image.attributes["height"], "\\textheight")
+  local width_given = image.attributes["width"] ~= nil and image.attributes["width"] ~= ""
+  local height_given = image.attributes["height"] ~= nil and image.attributes["height"] ~= ""
+  if (width_given and not width) or (height_given and not height) then
+    image.caption = {}
+    if not width_given then
+      image.attributes["width"] = "58%"
+    end
+    return {raw("\\begin{center}"), el, raw("\\end{center}")}
   end
-  if not image.attributes["height"] then
-    image.attributes["height"] = "27%"
-  end
-  return {raw("\\begin{center}"), el, raw("\\end{center}")}
+  width = width or "0.58\\linewidth"
+  height = height or "0.27\\textheight"
+  local command = string.format(
+    "\\includegraphics[width=%s,height=%s,keepaspectratio]{%s}",
+    width,
+    height,
+    escape_graphics_path(image.src)
+  )
+  return raw("\\begin{center}\n" .. command .. "\n\\end{center}")
 end
