@@ -7,12 +7,14 @@
 | Skill | 适用任务 | 检索标签 |
 |---|---|---|
 | [试卷洞见与分类汇编](math-exam-insight-compilation/) | 多套高中数学试卷的单卷分析、跨卷考情、分类汇编及教学说明 | 高中数学、多卷汇编、考点分析、难度分层、分类汇编、教研洞察 |
-| [数学试卷快评](math-exam-quick-review/) | 单卷数学快评及按需制作教师版 | 数学、试卷快评、PDF、教师版 |
-| [语文试卷快评](chinese-exam-quick-review/) | 单卷语文快评 | 语文、试卷快评、PDF |
-| [英语试卷快评](english-exam-quick-review/) | 单卷英语快评 | 英语、试卷快评、PDF |
-| [物理试卷快评](physics-exam-quick-review/) | 单卷物理快评 | 物理、试卷快评、PDF |
-| [化学试卷快评](chemistry-exam-quick-review/) | 单卷化学快评 | 化学、试卷快评、PDF |
-| [生物试卷快评](biology-exam-quick-review/) | 单卷生物快评 | 生物、试卷快评、PDF |
+| [数学试卷快评](exam-quick-review/math-exam-quick-review/) | 单卷数学快评及按需制作教师版 | 数学、试卷快评、PDF、教师版 |
+| [语文试卷快评](exam-quick-review/chinese-exam-quick-review/) | 单卷语文快评 | 语文、试卷快评、PDF |
+| [英语试卷快评](exam-quick-review/english-exam-quick-review/) | 单卷英语快评 | 英语、试卷快评、PDF |
+| [物理试卷快评](exam-quick-review/physics-exam-quick-review/) | 单卷物理快评 | 物理、试卷快评、PDF |
+| [化学试卷快评](exam-quick-review/chemistry-exam-quick-review/) | 单卷化学快评 | 化学、试卷快评、PDF |
+| [生物试卷快评](exam-quick-review/biology-exam-quick-review/) | 单卷生物快评 | 生物、试卷快评、PDF |
+
+仓库顶层按技能或技能系列组织：`exam-quick-review/` 集中存放六学科快评和通用快评技能；`math-exam-insight-compilation/` 是独立的数学多卷分类汇编技能。每个快评子目录都是独立 Skill，安装时选择其中需要的完整子目录。
 
 ## 安装与使用
 
@@ -26,7 +28,7 @@
 
 ## 六学科试卷快评
 
-将一份试卷整理为面向家长和学生的前端快评，包含整卷判断、考点分布、逐题考点、难度、分值和答案摘要；可按要求增加教师版，数学另有逐题详细解析规范。通用入口为 [exam-frontend-quick-review](exam-frontend-quick-review/)。PDF 排版需要相应工具和字体，可选 [Typst 版式骨架](exam-frontend-quick-review/assets/版式起点.typ)；生成后应逐页检查。[案例说明](exam-frontend-quick-review/examples/案例说明.md)介绍公开版边界。
+将一份试卷整理为面向家长和学生的前端快评，包含整卷判断、考点分布、逐题考点、难度、分值和答案摘要；可按要求增加教师版，数学另有逐题详细解析规范。通用入口为 [exam-frontend-quick-review](exam-quick-review/exam-frontend-quick-review/)。PDF 排版需要相应工具和字体，可选 [Typst 版式骨架](exam-quick-review/exam-frontend-quick-review/assets/版式起点.typ)；生成后应逐页检查。[案例说明](exam-quick-review/exam-frontend-quick-review/examples/案例说明.md)介绍公开版边界。
 
 ## 协作与使用边界
 
