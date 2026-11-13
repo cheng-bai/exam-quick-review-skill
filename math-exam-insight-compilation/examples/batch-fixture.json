@@ -1,0 +1,113 @@
+{
+  "schema_version": 1,
+  "batch_id": "synthetic-batch-not-real-exams",
+  "records_path": "counting-fixture.json",
+  "scopes": [
+    {
+      "id": "geometry-early",
+      "question_ids": [
+        "Q1",
+        "Q2",
+        "Q3",
+        "Q4"
+      ]
+    }
+  ],
+  "products": [
+    {
+      "id": "solid",
+      "scope_id": "geometry-early",
+      "variant": "topic",
+      "question_ids": [
+        "Q1",
+        "Q2"
+      ]
+    },
+    {
+      "id": "relations",
+      "scope_id": "geometry-early",
+      "variant": "topic",
+      "question_ids": [
+        "Q3",
+        "Q4"
+      ]
+    },
+    {
+      "id": "student",
+      "scope_id": "geometry-early",
+      "variant": "student",
+      "question_ids": [
+        "Q1",
+        "Q2",
+        "Q3",
+        "Q4"
+      ]
+    },
+    {
+      "id": "teacher",
+      "scope_id": "geometry-early",
+      "variant": "teacher",
+      "question_ids": [
+        "Q1",
+        "Q2",
+        "Q3",
+        "Q4"
+      ],
+      "same_order_as": "student"
+    }
+  ],
+  "coverage": [
+    {
+      "id": "split",
+      "scope_id": "geometry-early",
+      "product_ids": [
+        "solid",
+        "relations"
+      ],
+      "mode": "partition"
+    }
+  ],
+  "revisions": {
+    "stem:Q1": "r1",
+    "solution:Q1": "r1",
+    "classification": "c1",
+    "layout:student": "l1",
+    "stem:Q2": "r1",
+    "solution:Q2": "r1",
+    "stem:Q3": "r1",
+    "solution:Q3": "r1",
+    "stem:Q4": "r1",
+    "solution:Q4": "r1"
+  },
+  "artifacts": [
+    {
+      "id": "student-md",
+      "product_id": "student",
+      "path": "synthetic-source.md",
+      "depends_on": {
+        "stem:Q1": "r1",
+        "classification": "c1",
+        "layout:student": "l1",
+        "stem:Q2": "r1",
+        "stem:Q3": "r1",
+        "stem:Q4": "r1"
+      }
+    },
+    {
+      "id": "teacher-md",
+      "product_id": "teacher",
+      "path": "synthetic-source.md",
+      "depends_on": {
+        "stem:Q1": "r1",
+        "solution:Q1": "r1",
+        "classification": "c1",
+        "stem:Q2": "r1",
+        "solution:Q2": "r1",
+        "stem:Q3": "r1",
+        "solution:Q3": "r1",
+        "stem:Q4": "r1",
+        "solution:Q4": "r1"
+      }
+    }
+  ]
+}

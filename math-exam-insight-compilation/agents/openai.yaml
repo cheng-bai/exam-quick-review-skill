@@ -1,0 +1,6 @@
+interface:
+  display_name: "试卷洞见与分类汇编"
+  short_description: "用统一题目底稿组织试卷教研、分类汇编与选题说明，核对母集和版本依赖以减少返工"
+  default_prompt: "请用 $math-exam-insight-compilation 处理我提供的试卷，先复用已核验底稿并锁定本次产品，再完成教研分类、所需汇编与说明，核对母集、版本依赖和实际显示。"
+policy:
+  allow_implicit_invocation: true

@@ -1,0 +1,232 @@
+{
+  "schema_version": 1,
+  "papers": [
+    {
+      "id": "P1",
+      "title": "合成卷一",
+      "included": true
+    },
+    {
+      "id": "P2",
+      "title": "合成卷二",
+      "included": true
+    },
+    {
+      "id": "P3",
+      "title": "范围不同的合成卷",
+      "included": false,
+      "excluded_reason": "主题不可比"
+    }
+  ],
+  "questions": [
+    {
+      "id": "Q1",
+      "paper_id": "P1",
+      "origin_id": "original-1",
+      "original_number": "1",
+      "stem": "合成计数夹具：此处仅占位，不是可交付原题。",
+      "stem_complete": true,
+      "images": [],
+      "source": {
+        "path": "synthetic-source.md",
+        "line": 1
+      }
+    },
+    {
+      "id": "Q2",
+      "paper_id": "P1",
+      "origin_id": "original-2",
+      "original_number": "2",
+      "stem": "合成计数夹具：此处仅占位，不是可交付原题。",
+      "stem_complete": true,
+      "images": [],
+      "source": {
+        "path": "synthetic-source.md",
+        "line": 1
+      }
+    },
+    {
+      "id": "Q3",
+      "paper_id": "P2",
+      "origin_id": "original-3",
+      "original_number": "3",
+      "stem": "合成计数夹具：此处仅占位，不是可交付原题。",
+      "stem_complete": true,
+      "images": [],
+      "source": {
+        "path": "synthetic-source.md",
+        "line": 1
+      }
+    },
+    {
+      "id": "Q4",
+      "paper_id": "P2",
+      "origin_id": "original-4",
+      "original_number": "4",
+      "stem": "合成计数夹具：此处仅占位，不是可交付原题。",
+      "stem_complete": true,
+      "images": [],
+      "source": {
+        "path": "synthetic-source.md",
+        "line": 1
+      }
+    },
+    {
+      "id": "Q5",
+      "paper_id": "P3",
+      "origin_id": "original-5",
+      "original_number": "5",
+      "stem": "合成计数夹具：此处仅占位，不是可交付原题。",
+      "stem_complete": true,
+      "images": [],
+      "source": {
+        "path": "synthetic-source.md",
+        "line": 1
+      }
+    }
+  ],
+  "units": [
+    {
+      "id": "U1",
+      "question_id": "Q1",
+      "subquestion": "s1",
+      "task_status": "verified",
+      "solution_status": "verified",
+      "key_action": "合成计数动作",
+      "boundary": "合成边界",
+      "verification_note": "合成 fixture 状态，不是数学核验",
+      "training_role": "合成入口",
+      "display_subquestion": "(1)"
+    },
+    {
+      "id": "U2",
+      "question_id": "Q1",
+      "subquestion": "s2",
+      "task_status": "verified",
+      "solution_status": "verified",
+      "key_action": "合成计数动作",
+      "boundary": "合成边界",
+      "verification_note": "合成 fixture 状态，不是数学核验",
+      "training_role": "合成入口",
+      "display_subquestion": "(2)"
+    },
+    {
+      "id": "U3",
+      "question_id": "Q2",
+      "subquestion": "whole",
+      "task_status": "verified",
+      "solution_status": "verified",
+      "key_action": "合成计数动作",
+      "boundary": "合成边界",
+      "verification_note": "合成 fixture 状态，不是数学核验",
+      "training_role": "合成入口",
+      "display_subquestion": "整题"
+    },
+    {
+      "id": "U4",
+      "question_id": "Q3",
+      "subquestion": "whole",
+      "task_status": "verified",
+      "solution_status": "conflict",
+      "key_action": "合成计数动作",
+      "boundary": "合成边界",
+      "verification_note": "合成 fixture 状态，不是数学核验",
+      "training_role": "合成入口",
+      "display_subquestion": "整题"
+    },
+    {
+      "id": "U5",
+      "question_id": "Q4",
+      "subquestion": "whole",
+      "task_status": "pending",
+      "solution_status": "pending",
+      "key_action": "合成计数动作",
+      "boundary": "合成边界",
+      "verification_note": "合成 fixture 状态，不是数学核验",
+      "training_role": "合成入口",
+      "display_subquestion": "整题"
+    },
+    {
+      "id": "U6",
+      "question_id": "Q5",
+      "subquestion": "whole",
+      "task_status": "verified",
+      "solution_status": "verified",
+      "key_action": "合成计数动作",
+      "boundary": "合成边界",
+      "verification_note": "合成 fixture 状态，不是数学核验",
+      "training_role": "合成入口",
+      "display_subquestion": "整题"
+    }
+  ],
+  "groups": [
+    {
+      "id": "G1",
+      "title": "合成任务类 G1",
+      "definition": "计数夹具类别",
+      "include_when": "合成直接命中条件",
+      "exclude_when": "合成排除条件",
+      "members": [
+        {
+          "unit_id": "U1",
+          "kind": "direct",
+          "reason": "合成归属理由"
+        },
+        {
+          "unit_id": "U1",
+          "kind": "direct",
+          "reason": "合成归属理由"
+        },
+        {
+          "unit_id": "U3",
+          "kind": "direct",
+          "reason": "合成归属理由"
+        },
+        {
+          "unit_id": "U4",
+          "kind": "direct",
+          "reason": "合成归属理由"
+        },
+        {
+          "unit_id": "U2",
+          "kind": "transfer",
+          "reason": "合成归属理由"
+        },
+        {
+          "unit_id": "U5",
+          "kind": "direct",
+          "reason": "合成归属理由"
+        },
+        {
+          "unit_id": "U6",
+          "kind": "direct",
+          "reason": "合成归属理由"
+        }
+      ]
+    },
+    {
+      "id": "G2",
+      "title": "合成任务类 G2",
+      "definition": "计数夹具类别",
+      "include_when": "合成直接命中条件",
+      "exclude_when": "合成排除条件",
+      "members": [
+        {
+          "unit_id": "U1",
+          "kind": "direct",
+          "reason": "合成归属理由"
+        },
+        {
+          "unit_id": "U2",
+          "kind": "direct",
+          "reason": "合成归属理由"
+        },
+        {
+          "unit_id": "U4",
+          "kind": "transfer",
+          "reason": "合成归属理由"
+        }
+      ]
+    }
+  ]
+}
