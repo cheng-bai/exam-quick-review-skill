@@ -1,0 +1,6 @@
+interface:
+  display_name: "数学试卷快评"
+  short_description: "给出一份高中数学试卷，直接生成逐题五星快评与可编辑 Excel"
+  default_prompt: "用 $math-exam-quick-review 处理这份试卷，优先复用现成 Markdown，直接交付 Excel 和简短快评。"
+policy:
+  allow_implicit_invocation: true
