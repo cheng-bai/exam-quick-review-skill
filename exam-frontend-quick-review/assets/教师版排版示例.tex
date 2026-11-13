@@ -2,13 +2,17 @@
 \documentclass[11pt,a4paper]{ctexart}
 \usepackage[margin=20mm]{geometry}
 \usepackage{amsmath,amssymb,xcolor}
+\usepackage{titlesec}
+\definecolor{softgreen}{HTML}{C7DFD1}
+\titleformat{\section}{\large\bfseries\color{subjectgreen}}{}{0pt}{}[\vspace{2pt}\color{softgreen}\titlerule]
+\titlespacing*{\section}{0pt}{1.5em}{0.8em}
 \definecolor{subjectgreen}{HTML}{087B52}
 \setlength{\parindent}{0pt}
 \setlength{\parskip}{0.6em}
 \linespread{1.18}
-\newcommand{\qlabel}[1]{\par\nopagebreak\textbf{\textcolor{subjectgreen}{#1}}\quad}
+\newcommand{\qlabel}[1]{\par\medskip\nopagebreak\textbf{\textcolor{subjectgreen}{\ensuremath{\blacksquare} #1}}\quad}
 \begin{document}
-{\LARGE\bfseries\textcolor{subjectgreen}{数学教师版 · 排版示例}}
+\noindent\colorbox{subjectgreen}{\parbox{\dimexpr\linewidth-2\fboxsep\relax}{\vspace{5pt}\hspace{8pt}\color{white}\Large\bfseries 数学教师版\quad\normalsize 试卷分析与逐题解析\vspace{5pt}}}
 
 自编演示题；使用时替换为核对过的原卷内容。
 

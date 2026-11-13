@@ -1,15 +1,25 @@
 // 版式示例：替换为核对过的本卷内容；不要把整题放进不可跨页的盒子或表格。
-#set page(paper: "a4", margin: (x: 20mm, y: 18mm), numbering: "1")
-#set text(font: "Songti SC", size: 11pt, fill: rgb("#21312a"))
-#set par(leading: 0.75em, spacing: 0.8em, justify: true)
-#let theme = rgb("#087b52") // 与数学前端版一致；其他学科替换为对应色卡。
-#let label(t) = block(above: 10pt, below: 5pt, breakable: false, sticky: true)[#text(fill: theme, weight: "bold", size: 11.5pt, t)]
+#set page(paper: "a4", margin: (x: 22mm, top: 20mm, bottom: 20mm), numbering: "1")
+#set text(font: "Songti SC", size: 11pt, fill: rgb("#26332d"))
+#set par(leading: 0.8em, spacing: 0.85em, justify: true)
+#let theme = rgb("#087b52")
+#let pale = rgb("#edf6f0")
+#let label(t) = block(above: 11pt, below: 5pt, sticky: true)[#text(fill: theme, weight: "bold", size: 10.5pt)[■ #t]]
 #let question(n, body) = [
-  #block(above: 14pt, below: 7pt, breakable: false, sticky: true)[#text(fill: theme, weight: "bold", size: 14pt)[第 #n 题]]
+  #block(above: 18pt, below: 9pt, sticky: true)[
+    #line(length: 100%, stroke: 0.6pt + rgb("#c7dfd1"))
+    #v(6pt)
+    #text(fill: theme, weight: "bold", size: 14pt)[第 #n 题]
+  ]
   #body
 ]
 
-#text(size: 19pt, fill: theme, weight: "bold")[数学教师版 · 排版示例]
+#block(width: 100%, fill: theme, inset: (x: 15pt, y: 12pt))[
+  #text(fill: white, size: 18pt, weight: "bold")[数学教师版] #h(1em)
+  #text(fill: white, size: 10pt)[试卷分析与逐题解析]
+]
+#v(7pt)
+#text(size: 9pt, fill: rgb("#53665b"))[版式演示 · 自编题目]
 
 #question(1)[
   已知函数 $f(x) = x^2 - 2x + 2$，求该函数的最小值，并说明理由。
