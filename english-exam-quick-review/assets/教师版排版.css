@@ -1,0 +1,9 @@
+/* 配合支持数学公式的 Markdown → HTML 渲染器；打印前逐页检查。 */
+@page { size: A4; margin: 20mm 22mm; }
+body { font: 11pt/1.8 "Songti SC", "STSong", serif; color: #26332d; max-width: 170mm; margin: auto; }
+h1 { background: #087b52; color: white; padding: 12pt 15pt; font-size: 18pt; }
+h2 { color: #087b52; border-bottom: 1px solid #c7dfd1; padding-bottom: 7pt; margin-top: 22pt; break-after: avoid; }
+p { margin: .8em 0; }
+strong { color: #087b52; }
+blockquote { margin: 0; color: #53665b; }
+img { max-width: 100%; height: auto; }

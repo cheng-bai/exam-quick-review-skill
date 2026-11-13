@@ -1,0 +1,44 @@
+% XeLaTeX 编译；自编演示题，使用时替换为核对过的原卷内容。
+\documentclass[11pt,a4paper]{ctexart}
+\usepackage[margin=20mm]{geometry}
+\usepackage{amsmath,amssymb,xcolor}
+\usepackage{titlesec}
+\definecolor{softgreen}{HTML}{C7DFD1}
+\titleformat{\section}{\large\bfseries\color{subjectgreen}}{}{0pt}{}[\vspace{2pt}\color{softgreen}\titlerule]
+\titlespacing*{\section}{0pt}{1.5em}{0.8em}
+\definecolor{subjectgreen}{HTML}{087B52}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.6em}
+\linespread{1.18}
+\newcommand{\qlabel}[1]{\par\medskip\nopagebreak\textbf{\textcolor{subjectgreen}{\ensuremath{\blacksquare} #1}}\quad}
+\begin{document}
+\noindent\colorbox{subjectgreen}{\parbox{\dimexpr\linewidth-2\fboxsep\relax}{\vspace{5pt}\hspace{8pt}\color{white}\Large\bfseries 数学教师版\quad\normalsize 试卷分析与逐题解析\vspace{5pt}}}
+
+自编演示题；使用时替换为核对过的原卷内容。
+
+\section*{第 1 题}
+已知函数 $f(x)=x^2-2x+2$，求该函数的最小值，并说明理由。
+
+\qlabel{考点}二次函数的最值。
+
+\qlabel{答案}最小值为 $1$。
+
+\qlabel{解析}先配方，转化为顶点式：
+\[
+f(x)=x^2-2x+2=(x-1)^2+1.
+\]
+因为 $(x-1)^2\geq 0$，当且仅当 $x=1$ 时取等，所以函数的最小值为 $1$。
+
+\section*{第 2 题}
+已知 $a>0$，考虑函数 $g(x)=x+\frac{a}{x}$（$x>0$）。求其最小值，并说明取等条件。
+
+\qlabel{考点}基本不等式与取等条件。
+
+\qlabel{答案}最小值为 $2\sqrt a$。
+
+\qlabel{解析}由于 $x>0$、$a>0$，两项均为正，可以使用基本不等式：
+\[
+g(x)=x+\frac{a}{x}\geq 2\sqrt{x\cdot\frac{a}{x}}=2\sqrt a.
+\]
+当 $x=\frac{a}{x}$，即 $x=\sqrt a$ 时取等。因此，最小值为 $2\sqrt a$。
+\end{document}

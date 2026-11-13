@@ -6,3 +6,7 @@
 4. 提交 Pull Request，写明修改内容、实际检查与尚未覆盖的部分。请勿提交密钥、学生数据、无权公开的试卷或素材。
 
 跨 AI 协作时，以仓库文件和 Pull Request 记录为准；不同平台的个人记忆和本地路径不构成共享依据。
+
+教师版模板变更时还需运行 `typst compile exam-frontend-quick-review/assets/教师版排版示例.typ /tmp/exam-teacher-template.pdf`，并以长段落、长公式和跨页题目试排、目视检查。
+
+修改 Markdown 示例时检查数学公式与段落；修改 LaTeX 示例时使用 `xelatex -interaction=nonstopmode -halt-on-error 教师版排版示例.tex` 编译，并目视检查 PDF。缺少编译环境时应记录未验证范围。

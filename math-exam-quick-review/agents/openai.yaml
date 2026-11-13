@@ -1,0 +1,6 @@
+interface:
+  display_name: "数学试卷快评"
+  short_description: "给出一份高中数学试卷，默认生成面向家长的前端快评 PDF；Excel 及其他格式仅在要求时增加"
+  default_prompt: "用 $math-exam-quick-review 处理这份试卷，优先复用现成 Markdown。用户只要求快评时，直接交付面向家长和学生的前端快评 PDF；仅在用户明确要求时再增加 Excel、教师版或其他格式。"
+policy:
+  allow_implicit_invocation: true
