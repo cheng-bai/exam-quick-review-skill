@@ -1,0 +1,67 @@
+\usepackage[most]{tcolorbox}
+\usepackage{xcolor}
+\usepackage{titlesec}
+\usepackage{graphicx}
+
+\definecolor{KamiNavy}{HTML}{2F5563}
+\definecolor{KamiSolutionFrame}{HTML}{5D7F8C}
+\definecolor{KamiAnswerFrame}{HTML}{6F8F7A}
+\definecolor{KamiNoteFrame}{HTML}{B88352}
+\definecolor{KamiSolutionFill}{HTML}{ECF3F6}
+\definecolor{KamiAnswerFill}{HTML}{EDF5EF}
+\definecolor{KamiNoteFill}{HTML}{F8F0E7}
+
+\AtBeginDocument{\setlength{\parskip}{4pt}}
+
+\titleformat{\section}{\Large\bfseries\color{KamiNavy}}{}{0pt}{}
+\titleformat{\subsection}{\large\bfseries\color{KamiNavy}}{}{0pt}{}
+\titlespacing*{\section}{0pt}{14pt}{7pt}
+\titlespacing*{\subsection}{0pt}{14pt}{6pt}
+
+\tcbset{
+  kamiTeacherBase/.style={
+    enhanced,
+    breakable,
+    boxrule=.45pt,
+    arc=2.5pt,
+    left=7pt,
+    right=7pt,
+    top=5pt,
+    bottom=5pt,
+    before skip=5pt,
+    after skip=9pt,
+    fonttitle=\bfseries,
+    coltitle=white,
+    before upper={\setlength{\parindent}{0pt}}
+  }
+}
+
+\newtcolorbox{kamiteacheranswerbox}{
+  kamiTeacherBase,
+  colback=KamiAnswerFill,
+  colframe=KamiAnswerFrame,
+  title=参考答案
+}
+
+\newtcolorbox{kamiteachersolutionbox}{
+  kamiTeacherBase,
+  colback=KamiSolutionFill,
+  colframe=KamiSolutionFrame,
+  title=解析
+}
+
+\newtcolorbox{kamiteachernotebox}[1][重点]{
+  kamiTeacherBase,
+  colback=KamiNoteFill,
+  colframe=KamiNoteFrame,
+  title=#1
+}
+
+\newtcolorbox{kamiteachersummarybox}{
+  kamiTeacherBase,
+  colback=white,
+  colframe=KamiNavy,
+  borderline west={1.6pt}{0pt}{KamiNavy},
+  coltitle=KamiNavy,
+  boxrule=.35pt
+}

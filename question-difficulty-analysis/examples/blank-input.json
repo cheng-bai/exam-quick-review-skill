@@ -1,0 +1,41 @@
+{
+  "analysis_id": "",
+  "paper_id": null,
+  "scope": "paper",
+  "source": "",
+  "algorithm": "HCT-rules-v1.1",
+  "parameter_version": "default-v1.1",
+  "dictionary_version": "",
+  "parameters": {
+    "weights": {
+      "K": 0.2,
+      "R": 0.25,
+      "A": 0.15,
+      "V": 0.15,
+      "P": 0.15,
+      "I": 0.1
+    },
+    "HCT_weights": [
+      0.45,
+      0.35,
+      0.2
+    ],
+    "C_scale": 3,
+    "repeat": [
+      1,
+      0.7,
+      0.4
+    ],
+    "depth_increment": 0.1,
+    "depth_cap": 1.3,
+    "band_thresholds": [
+      35,
+      65
+    ],
+    "rounding": "half_up"
+  },
+  "step_types": [],
+  "questions": [],
+  "expected_question_ids": [],
+  "inventory_source": ""
+}

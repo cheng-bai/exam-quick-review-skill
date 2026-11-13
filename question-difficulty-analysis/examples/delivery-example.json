@@ -1,0 +1,139 @@
+{
+  "analysis_id": "demo-domain-001",
+  "paper_id": null,
+  "scope": "question",
+  "source": "自编格式示例：x/x=1；不冒充历史试卷",
+  "algorithm": "HCT-rules-v1.1",
+  "parameter_version": "default-v1.1",
+  "dictionary_version": "demo-v1",
+  "parameters": {
+    "weights": {
+      "K": 0.2,
+      "R": 0.25,
+      "A": 0.15,
+      "V": 0.15,
+      "P": 0.15,
+      "I": 0.1
+    },
+    "HCT_weights": [
+      0.45,
+      0.35,
+      0.2
+    ],
+    "C_scale": 3,
+    "repeat": [
+      1,
+      0.7,
+      0.4
+    ],
+    "depth_increment": 0.1,
+    "depth_cap": 1.3,
+    "band_thresholds": [
+      35,
+      65
+    ],
+    "rounding": "half_up"
+  },
+  "questions": [
+    {
+      "id": "example-1",
+      "score": 5,
+      "pending": false,
+      "steps": [
+        {
+          "id": "S1",
+          "type_id": "DOMAIN-CHECK",
+          "input": "x/x=1",
+          "action": "保留分母非零条件；在x不等于0时约分得到恒等式",
+          "output": "解集为全体非零实数",
+          "dependencies": [],
+          "dimensions": {
+            "K": 0,
+            "R": 0,
+            "A": 0,
+            "V": 0,
+            "P": 1,
+            "I": 0
+          },
+          "dimension_evidence": {
+            "K": "分母直接对应除法合法性条件",
+            "R": "在分母非零时直接约分为恒等式，无额外隐含推理",
+            "A": "短代数消项，没有长符号运算",
+            "V": "全过程保持代数表示",
+            "P": "需要保留x=0这一禁值",
+            "I": "仅不等式与定义域模块"
+          },
+          "commentary": "消去的是相同项，不是原定义域。",
+          "phase_id": "G1",
+          "source_ref": "题干 x/x"
+        }
+      ],
+      "t": [
+        0,
+        0,
+        0,
+        0,
+        1
+      ],
+      "T_evidence": [
+        {
+          "item": 1,
+          "value": 0,
+          "evidence": "分母直接提示合法性条件，无隐蔽入口"
+        },
+        {
+          "item": 2,
+          "value": 0,
+          "evidence": "没有竞争解法需要试探。"
+        },
+        {
+          "item": 3,
+          "value": 0,
+          "evidence": "代入零立即发现原式无意义。"
+        },
+        {
+          "item": 4,
+          "value": 0,
+          "evidence": "回查仅涉及一个禁值。"
+        },
+        {
+          "item": 5,
+          "value": 1,
+          "evidence": "漏排零会扩大解集，需回原式检验。"
+        }
+      ],
+      "B": 0,
+      "B_evidence": "分母明确提示禁值，约分直接，无非显然构造",
+      "branches": 0,
+      "question": "求方程 x/x=1 的实数解集。",
+      "source_ref": "自编格式示例，第1题",
+      "verification_status": "已核验",
+      "solution_basis": "分母非零时恒等，按定义域求解。",
+      "answer": "全体非零实数",
+      "goal_phases": [
+        {
+          "id": "G1",
+          "type_id": "DOMAIN-SOLVE",
+          "name": "在定义域内求解",
+          "goal": "找出使原式成立的实数",
+          "direction": "先确定合法性，再核对恒等关系",
+          "output": "x不等于0",
+          "step_ids": [
+            "S1"
+          ]
+        }
+      ]
+    }
+  ],
+  "step_types": [
+    {
+      "id": "DOMAIN-CHECK",
+      "name": "定义域与合法性检查",
+      "definition": "确定表达式和变换的合法条件",
+      "include": "分母非零、对数真数为正等条件",
+      "exclude": "不涉及合法性的一般恒等变形",
+      "aliases": [],
+      "status": "本次临时词典"
+    }
+  ]
+}

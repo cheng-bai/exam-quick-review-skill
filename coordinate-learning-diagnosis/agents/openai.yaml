@@ -1,0 +1,4 @@
+interface:
+  display_name: "坐标学情诊断与差异化教学"
+  short_description: "从题目预判或学生表现出发，生成下节课备课卡、针对性练习与复测安排"
+  default_prompt: "使用 $coordinate-learning-diagnosis，根据我提供的题目或学生作答，选择备课预判或课后诊断，给出下节课备课卡，说明怎么教、练什么、怎样确认学会。"

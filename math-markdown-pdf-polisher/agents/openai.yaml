@@ -1,0 +1,4 @@
+interface:
+  display_name: "Math Markdown PDF Polisher"
+  short_description: "Polish math Markdown and teacher handouts into verified PDFs"
+  default_prompt: "Use $math-markdown-pdf-polisher to structure this formula-heavy Markdown or teacher handout, render a polished PDF, and verify the result."
