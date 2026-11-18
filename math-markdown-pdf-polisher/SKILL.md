@@ -10,7 +10,7 @@ description: "清理和排版中文高中数学 OCR/公式密集 Markdown，修�
 ## 模式路由
 
 - **仅数学审校**：源文件只读，在任务副本或审校记录中逐题独立核算，保留来源、修订理由和待核项；复杂任务按适用约定复核。不运行清理和渲染流程，除非用户也要求排版。
-- **标准试卷模式**：题号以 `数字.` 为主，标签为 `答案：`/`解析：`，使用现有 `exam-blocks.lua` 和 `latex-exam-polish-header.tex`。
+- **标准试卷模式**：题号可以是 Pandoc 有序列表的每一项，或段落开头的半角/全角数字加 `.`、`．`、`、`；标签为 `答案：`/`解析：`。使用现有 `exam-blocks.lua` 和 `latex-exam-polish-header.tex`。
 - **低饱和教师讲义模式**：出现 `【例 N】`、`【答案】`、`【解析】`、`【知识补充】` 等方括号标签，或用户要求完整解析彩色框、低饱和蓝绿讲义风格时，必须读取 [references/teacher-kami-mode.md](references/teacher-kami-mode.md)，使用其中的预处理器、Lua filter、LaTeX header 和语义审计。
 - **原生 LaTeX 新讲义**：内容不是 OCR/Markdown 清理而是从零编写时，可配合 `lecture-pdf-layout` 的模板；不要把原生模板路线硬套到已有长 Markdown。
 - `kami` 只提供视觉反馈与验收方法；数学语义边界和公式正确性仍由本 skill 负责。
